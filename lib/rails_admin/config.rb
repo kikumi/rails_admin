@@ -79,6 +79,8 @@ module RailsAdmin
       #
       # @see RailsAdmin::Config.model
       attr_reader :registry
+      
+      attr_accessor :offline
 
       # Setup authentication to be run as a before filter
       # This is run inside the controller instance so you can setup any authentication you need to
@@ -259,6 +261,7 @@ module RailsAdmin
         @included_models = []
         @label_methods = [:name, :title]
         @registry = {}
+        @offline = false
       end
 
       # Reset a provided model's configuration.
