@@ -64,7 +64,7 @@ module RailsAdmin
 
       def all(options = {}, scope = nil)
         scope ||= model
-        scope.all(merge_order(options))
+        scope.scoped.all(merge_order(options))
       end
 
       def paginated(options = {}, scope = nil)
