@@ -262,6 +262,7 @@ module RailsAdmin
         @label_methods = [:name, :title]
         @registry = {}
         @offline = false
+        @logout_link_method = nil
       end
 
       # Reset a provided model's configuration.
@@ -279,6 +280,15 @@ module RailsAdmin
         self.models.select {|m| m.visible? }.sort do |a, b|
           (weight_order = a.weight <=> b.weight) == 0 ? a.label.downcase <=> b.label.downcase : weight_order
         end
+      end
+      
+      DEFAULT_LOGOUT_LINK_METHOD = Proc.new do
+        link_to header_icon(:logout, t("admin.credentials.log_out")), (destroy_session_path(current_user) rescue '#'), :method => :delete 
+      end
+      
+      def logout_link_method(&blk)
+        @logout_link_method = blk if blk
+        @logout_link_method || DEFAULT_LOGOUT_LINK_METHOD
       end
     end
 

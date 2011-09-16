@@ -216,6 +216,10 @@ module RailsAdmin
         t('home.name')
       end
     end
+    
+    def logout_link
+      instance_eval &RailsAdmin::Config.logout_link_method
+    end
 
     def messages_and_help_for field
       tags = []

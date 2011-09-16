@@ -42,7 +42,7 @@ module RailsAdmin
     def _current_user
       instance_eval &RailsAdmin::Config.current_user_method
     end
-
+    
     def set_plugin_name
       @plugin_name = "RailsAdmin"
     end
