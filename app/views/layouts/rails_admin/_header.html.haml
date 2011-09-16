@@ -1,5 +1,5 @@
 #header
-  = render :partial => "rails_admin/main/title"
+  = render :partial => (RailsAdmin::Config.title_partial || "rails_admin/main/title")
   %h1
 
   #user-navigation

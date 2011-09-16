@@ -81,6 +81,8 @@ module RailsAdmin
       attr_reader :registry
       
       attr_accessor :offline
+      
+      attr_accessor :title_partial
 
       # Setup authentication to be run as a before filter
       # This is run inside the controller instance so you can setup any authentication you need to
@@ -263,6 +265,7 @@ module RailsAdmin
         @registry = {}
         @offline = false
         @logout_link_method = nil
+        @title_partial = nil
       end
 
       # Reset a provided model's configuration.
